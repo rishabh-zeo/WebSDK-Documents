@@ -11,10 +11,21 @@ body {
     background-color: #f5f5f5;
 }
 
+.app {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.main-content {
+    margin-left: 220px;
+    padding: 2rem 2rem 2rem 0;
+}
+
 .container {
     max-width: 800px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 1rem;
 }
 
 h1 {
@@ -40,41 +51,46 @@ h2 {
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
+    gap: 1rem;
+    margin-top: 1rem;
 }
 
-label {
-    font-weight: 500;
-    color: #555;
+.form-group label {
+    font-weight: bold;
 }
 
-input, textarea {
+.form-group input,
+.form-group textarea {
     padding: 0.5rem;
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 1rem;
 }
 
-textarea {
+.form-group textarea {
     min-height: 100px;
     resize: vertical;
 }
 
-button {
-    background-color: #3498db;
+.form-group button {
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
     color: white;
     border: none;
-    padding: 0.75rem 1.5rem;
     border-radius: 4px;
     cursor: pointer;
     font-size: 1rem;
     transition: background-color 0.2s;
-    margin-top: 0.5rem;
 }
 
-button:hover {
-    background-color: #2980b9;
+.form-group button:hover {
+    background-color: #0056b3;
+}
+
+.error-message {
+    color: #dc3545;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
 }
 
 .log-output {
@@ -99,4 +115,56 @@ button:hover {
     border-bottom: none;
     margin-bottom: 0;
     padding-bottom: 0;
+}
+
+.remove-btn {
+    color: #dc3545;
+    border: 1px solid #dc3545;
+    background: transparent;
+    border-radius: 4px;
+    padding: 0.25rem 0.75rem;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: background 0.2s, color 0.2s;
+}
+.remove-btn:hover {
+    background: #ffeaea;
+    color: #a71d2a;
+}
+
+.set-event-properties-btn,
+.set-user-identities-btn,
+.set-page-properties-btn {
+    padding: 0.6rem 1.5rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 123, 255, 0.08);
+    transition: background 0.2s, box-shadow 0.2s;
+}
+.set-event-properties-btn:hover,
+.set-user-identities-btn:hover,
+.set-page-properties-btn:hover {
+    background-color: #0056b3;
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.15);
+}
+
+.add-pair-btn {
+    color: #007bff;
+    border: 1px solid #007bff;
+    background: transparent;
+    border-radius: 4px;
+    padding: 0.25rem 0.75rem;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.add-pair-btn:hover {
+    background: #e6f0ff;
+    color: #0056b3;
+    border-color: #0056b3;
 }
