@@ -1,0 +1,405 @@
+.documentation-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.documentation-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.documentation-header h1 {
+  font-size: 2.5rem;
+  color: #2b6cb0;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #4a5568;
+}
+
+.documentation-nav {
+  position: sticky;
+  top: 0;
+  background: white;
+  padding: 1rem 0;
+  border-bottom: 1px solid #e2e8f0;
+  margin-bottom: 2rem;
+}
+
+.documentation-nav ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.documentation-nav a {
+  color: #4a5568;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.documentation-nav a:hover {
+  color: #2b6cb0;
+}
+
+.documentation-content {
+  line-height: 1.6;
+}
+
+.documentation-content section {
+  margin-bottom: 3rem;
+}
+
+.documentation-content h2 {
+  color: #2b6cb0;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+.documentation-content h3 {
+  color: #2d3748;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.method-card {
+  background: #f7fafc;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.method-card h4 {
+  color: #2b6cb0;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.method-card pre {
+  background: #2d3748;
+  color: #f7fafc;
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+  font-size: 0.9rem;
+}
+
+.examples-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.example-section {
+  background: #f7fafc;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.example-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.example-section li {
+  margin-bottom: 0.5rem;
+}
+
+.example-section a {
+  color: #2b6cb0;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.example-section a:hover {
+  color: #2c5282;
+  text-decoration: underline;
+}
+
+pre {
+  background: #2d3748;
+  color: #f7fafc;
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+ul {
+  padding-left: 1.5rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+.config-table-container {
+  margin: 2rem 0;
+  overflow-x: auto;
+}
+
+.config-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.config-table th,
+.config-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.config-table th {
+  background-color: #f7fafc;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.config-table tr:last-child td {
+  border-bottom: none;
+}
+
+.config-table code {
+  background-color: #f7fafc;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.9em;
+  color: #2b6cb0;
+}
+
+.config-table td:nth-child(2) {
+  color: #718096;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.9em;
+}
+
+.config-table td:nth-child(3) {
+  color: #718096;
+  font-style: italic;
+}
+
+.method-table-container {
+  margin: 2rem 0;
+  overflow-x: auto;
+}
+
+.method-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.method-table th,
+.method-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.method-table th {
+  background-color: #f7fafc;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.method-table tr:last-child td {
+  border-bottom: none;
+}
+
+.method-table code {
+  background-color: #f7fafc;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.9em;
+  color: #2b6cb0;
+}
+
+.method-table pre {
+  background-color: #f7fafc;
+  padding: 0.5rem;
+  border-radius: 4px;
+  margin: 0;
+  font-size: 0.9em;
+  white-space: pre-wrap;
+}
+
+.method-table ul {
+  margin: 0;
+  padding-left: 1rem;
+}
+
+.method-table li {
+  margin-bottom: 0.5rem;
+}
+
+.method-table li:last-child {
+  margin-bottom: 0;
+}
+
+.accordion-container {
+  margin: 2rem 0;
+}
+
+.accordion-item {
+  margin-bottom: 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.accordion-header {
+  width: 100%;
+  padding: 1.5rem;
+  background: #f7fafc;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.accordion-header:hover {
+  background: #edf2f7;
+}
+
+.accordion-header h3 {
+  margin: 0;
+  color: #2b6cb0;
+  font-size: 1.2rem;
+}
+
+.accordion-icon {
+  font-size: 1.5rem;
+  color: #4a5568;
+  transition: transform 0.2s;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.accordion-content.active {
+  max-height: 2000px; /* Adjust based on content */
+}
+
+.method-details {
+  padding: 1.5rem;
+  background: white;
+}
+
+.method-details h4 {
+  color: #2d3748;
+  margin: 1.5rem 0 1rem;
+  font-size: 1.1rem;
+}
+
+.method-details h4:first-child {
+  margin-top: 0;
+}
+
+.method-details p {
+  color: #4a5568;
+  line-height: 1.6;
+}
+
+.use-case {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: #f7fafc;
+  border-radius: 4px;
+}
+
+.use-case:last-child {
+  margin-bottom: 0;
+}
+
+.use-case h5 {
+  color: #2b6cb0;
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+
+.use-case pre {
+  margin: 0;
+  background: #2d3748;
+  color: #f7fafc;
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .documentation-container {
+    padding: 1rem;
+  }
+
+  .documentation-nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .method-grid,
+  .examples-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .config-table th,
+  .config-table td {
+    padding: 0.75rem;
+    font-size: 0.9em;
+  }
+
+  .method-table th,
+  .method-table td {
+    padding: 0.75rem;
+    font-size: 0.9em;
+  }
+
+  .method-table pre {
+    font-size: 0.8em;
+  }
+
+  .accordion-header {
+    padding: 1rem;
+  }
+
+  .method-details {
+    padding: 1rem;
+  }
+
+  .use-case {
+    padding: 0.75rem;
+  }
+} 

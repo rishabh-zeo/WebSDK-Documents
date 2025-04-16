@@ -6,6 +6,7 @@ import NeedsHashing from './pages/setUserIdentities/NeedsHashing';
 import PagePropertiesBasic from './pages/pageProperties/PagePropertiesBasic';
 import EventPropertiesBasic from './pages/eventProperties/EventPropertiesBasic';
 import HomePage from './pages/HomePage';
+import Documentation from './pages/Documentation';
 import './App.css';
 
 declare const window: Window & {
@@ -37,8 +38,9 @@ function AppRoutes() {
         <div className="app">
             <main className="main-content">
                 <Routes>
-                    <Route path="/" element={<HomePage />} />
+                    <Route path="/" element={<Documentation />} />
                     <Route path="/home" element={<HomePage />} />
+                    <Route path="/documentation" element={<Documentation />} />
                 </Routes>
             </main>
         </div>
