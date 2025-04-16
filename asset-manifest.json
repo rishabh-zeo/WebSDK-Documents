@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/WebSDK-Documents/static/css/main.31f0329f.css",
-    "main.js": "/WebSDK-Documents/static/js/main.94654450.js",
+    "main.css": "/WebSDK-Documents/static/css/main.b65b6c19.css",
+    "main.js": "/WebSDK-Documents/static/js/main.472b4d2c.js",
     "index.html": "/WebSDK-Documents/index.html",
-    "main.31f0329f.css.map": "/WebSDK-Documents/static/css/main.31f0329f.css.map",
-    "main.94654450.js.map": "/WebSDK-Documents/static/js/main.94654450.js.map"
+    "main.b65b6c19.css.map": "/WebSDK-Documents/static/css/main.b65b6c19.css.map",
+    "main.472b4d2c.js.map": "/WebSDK-Documents/static/js/main.472b4d2c.js.map"
   },
   "entrypoints": [
-    "static/css/main.31f0329f.css",
-    "static/js/main.94654450.js"
+    "static/css/main.b65b6c19.css",
+    "static/js/main.472b4d2c.js"
   ]
 }
