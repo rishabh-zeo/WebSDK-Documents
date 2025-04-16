@@ -254,21 +254,21 @@ eventData: {
             <div className="example-section">
               <h3>User Identities</h3>
               <ul>
-                <li><Link to="/user-identities">Basic Implementation</Link></li>
-                <li><Link to="/user-identities-hash">With Hashing</Link></li>
-                <li><Link to="/user-identities-already-hashed">Pre-hashed Identities</Link></li>
+                <li><Link to="user-identities" target="_blank" rel="noopener noreferrer">Basic Implementation</Link></li>
+                <li><Link to="user-identities-hash" target="_blank" rel="noopener noreferrer">With Hashing</Link></li>
+                <li><Link to="user-identities-already-hashed" target="_blank" rel="noopener noreferrer">Pre-hashed Identities</Link></li>
               </ul>
             </div>
             <div className="example-section">
               <h3>Page Properties</h3>
               <ul>
-                <li><Link to="/page-properties">Basic Implementation</Link></li>
+                <li><Link to="page-properties" target="_blank" rel="noopener noreferrer">Basic Implementation</Link></li>
               </ul>
             </div>
             <div className="example-section">
               <h3>Event Properties</h3>
               <ul>
-                <li><Link to="/event-properties">Basic Implementation</Link></li>
+                <li><Link to="event-properties" target="_blank" rel="noopener noreferrer">Basic Implementation</Link></li>
               </ul>
             </div>
           </div>
