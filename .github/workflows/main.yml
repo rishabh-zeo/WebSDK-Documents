@@ -1,0 +1,50 @@
+name: Sync Release Notes to Notes Repo
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  sync_notes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Main Repository
+        uses: actions/checkout@v4
+
+      - name: Get Release Information
+        id: get_release_info
+        run: |
+          RELEASE_TAG=${{ github.event.release.tag_name }}
+          RELEASE_BODY="${{ github.event.release.body }}"
+          echo "RELEASE_TAG=$RELEASE_TAG" >> $GITHUB_OUTPUT
+          echo "RELEASE_BODY=$(echo "$RELEASE_BODY" | jq -sRr '.')" >> $GITHUB_OUTPUT # Escape for environment variable
+
+      - name: Format Release Notes
+        id: format_notes
+        run: |
+          RELEASE_TAG="${{ steps.get_release_info.outputs.RELEASE_TAG }}"
+          RELEASE_BODY=$(echo "${{ steps.get_release_info.outputs.RELEASE_BODY }}" | jq -r .)
+          MARKDOWN_CONTENT="# Release $RELEASE_TAG\n\n$RELEASE_BODY"
+          echo "MARKDOWN_CONTENT=$(echo "$MARKDOWN_CONTENT" | jq -sRr '.')" >> $GITHUB_OUTPUT # Escape
+
+      - name: Checkout Notes Repository
+        uses: actions/checkout@v4
+        with:
+          repository: rishabh-zeo/zeotap-web-sdk-docs
+          token: ${{ secrets.SDK_DOC_REPO_TOKEN }}
+          path: my-docs/notes
+
+      - name: Create/Update Markdown File
+        run: |
+          MARKDOWN_CONTENT=$(echo "${{ steps.format_notes.outputs.MARKDOWN_CONTENT }}" | jq -r .)
+          FILE_NAME="release_${{ steps.get_release_info.outputs.RELEASE_TAG }}.md"
+          echo "$MARKDOWN_CONTENT" > my-docs/notes/$FILE_NAME
+
+      - name: Commit and Push Changes
+        run: |
+          cd notes_repo
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add .
+          git commit -m "Add release notes for ${{ steps.get_release_info.outputs.RELEASE_TAG }}" || echo "No changes to commit"
+          git push origin master
