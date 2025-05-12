@@ -42,9 +42,10 @@ jobs:
       - name: Create a Pull Request
         run: |
           cd docs-repo
-          gh pr create --title "Add release notes for ${{ github.event.release.tag_name }}" \
-                       --body "This PR adds release notes for ${{ github.event.release.tag_name }}" \
-                       --head $branch_name \
-                       --base main
+          gh pr create \
+                      --head "$branch_name" \
+                      --base main \
+                      --title "Add release notes for ${{ github.event.release.tag_name }}" \
+                      --body "This PR adds release notes for ${{ github.event.release.tag_name }}"
         env:
           GH_TOKEN: ${{ secrets.SDK_DOC_REPO_TOKEN }}
