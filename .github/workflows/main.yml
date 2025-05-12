@@ -1,51 +1,50 @@
-name: Sync Release Notes to Notes Repo
+name: Publish Release Notes to Docs
 
 on:
   release:
-    types: [published]
+    types: [published]  # trigger only when a release is published
 
 jobs:
-  sync_notes:
+  update-docs:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout Main Repository
+      - name: Checkout analytics repo
         uses: actions/checkout@v4
 
-      - name: Get Release Information
-        id: get_release_info
+      - name: Set up Git
         run: |
-          RELEASE_TAG=${{ github.event.release.tag_name }}
-          RELEASE_BODY=$(echo "${{ github.event.release.body }}" | sed 's/%/%25/g; s/\r/%0D/g; s/\n/%0A/g')
-          echo "RELEASE_TAG=$RELEASE_TAG" >> $GITHUB_OUTPUT
-          echo "RELEASE_BODY=$RELEASE_BODY" >> $GITHUB_OUTPUT
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Format Release Notes
-        id: format_notes
+      - name: Install GitHub CLI
         run: |
-          RELEASE_TAG="${{ steps.get_release_info.outputs.RELEASE_TAG }}"
-          ENCODED_RELEASE_BODY="${{ steps.get_release_info.outputs.RELEASE_BODY }}"
-          RELEASE_BODY=$(echo "$ENCODED_RELEASE_BODY" | sed 's/%0A/\n/g; s/%0D/\r/g; s/%25/%/g')
-          MARKDOWN_CONTENT="# Release $RELEASE_TAG\n\n$RELEASE_BODY"
-          echo "MARKDOWN_CONTENT=$(echo "$MARKDOWN_CONTENT" | jq -sRr '.')" >> $GITHUB_OUTPUT # Escape
+          sudo apt-get update
+          sudo apt-get install -y gh
 
-      - name: Checkout Notes Repository
-        uses: actions/checkout@v4
-        with:
-          repository: rishabh-zeo/zeotap-web-sdk-docs
-          token: ${{ secrets.SDK_DOC_REPO_TOKEN }}
-          path: my-docs/notes
-
-      - name: Create/Update Markdown File
+      - name: Clone to zeotap-web-sdk-docs repo
         run: |
-          MARKDOWN_CONTENT=$(echo "${{ steps.format_notes.outputs.MARKDOWN_CONTENT }}" | jq -r .)
-          FILE_NAME="release_${{ steps.get_release_info.outputs.RELEASE_TAG }}.md"
-          echo "$MARKDOWN_CONTENT" > my-docs/notes/$FILE_NAME
+          git clone "https://x-access-token:${{ secrets.SDK_DOC_REPO_TOKEN }}@github.com/rishabh-zeo/zeotap-web-sdk-docs.git" docs-repo
 
-      - name: Commit and Push Changes
+      - name: Create release notes file
         run: |
-          cd notes_repo
-          git config --local user.email "actions@github.com"
-          git config --local user.name "GitHub Actions"
-          git add .
-          git commit -m "Add release notes for ${{ steps.get_release_info.outputs.RELEASE_TAG }}" || echo "No changes to commit"
-          git push origin master
+          cd docs-repo
+          branch_name="release-notes-${{ github.event.release.tag_name }}"
+          git checkout -b $branch_name
+
+          mkdir -p mydocs/releasenotes
+          echo "${{ github.event.release.body }}" > mydocs/releasenotes/${{ github.event.release.tag_name }}.md
+
+          git add mydocs/releasenotes/${{ github.event.release.tag_name }}.md
+          git commit -m "Add release notes for ${{ github.event.release.tag_name }}"
+          git push origin $branch_name
+
+      - name: Create a Pull Request
+        run: |
+          cd docs-repo
+          gh pr create --title "Add release notes for ${{ github.event.release.tag_name }}" \
+                       --body "This PR adds release notes for ${{ github.event.release.tag_name }}" \
+                       --head $branch_name \
+                       --base main
+        env:
+          GH_TOKEN: ${{ secrets.SDK_DOC_REPO_TOKEN }}
